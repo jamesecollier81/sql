@@ -57,4 +57,4 @@ from
             mbg.billing_cnt
         group by
             account_name
-    ) t5 on t1.account_name = t5.account_name
+    ) t5 on t1.account_name = t5.account_name;
