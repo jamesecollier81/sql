@@ -1,4 +1,4 @@
-select
+SELECT
     id,
     FirstName as first_name,
     LastName as last_name,
@@ -18,9 +18,9 @@ select
     LinkedIn__c as linkedin,
     Website as domain,
     JumpCrew_Sale_Type__c as lead_type
-from
+FROM
     leads_db.sfdc_leads
-where
+WHERE
     (
         Industry <> ""
         and Company <> ""
