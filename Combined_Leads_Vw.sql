@@ -1,4 +1,4 @@
-select
+SELECT
     t1.id,
     'SalesForce' as source_system,
     t1.first_name,
@@ -19,12 +19,12 @@ select
     '' as customer_crm,
     0 as company_revenue,
     '' as purchasing_dept
-from
+FROM
     leads_db.sfdc_limited t1
-    left join leads_db.leads_state_mapping t2 on lower(t1.state) = t2.state
+    LEFT JOIN leads_db.leads_state_mapping t2 on lower(t1.state) = t2.state
 UNION
     DISTINCT
-select
+SELECT
     t3.id,
     t3.source_system,
     t3.first_name,
@@ -45,6 +45,6 @@ select
     t3.customer_crm,
     t3.company_revenue,
     t3.purchasing_dept
-from
+FROM
     leads_db.outreach t3
-    left join leads_db.leads_state_mapping t2 on lower(t3.state) = t2.state;
+    LEFT JOIN leads_db.leads_state_mapping t2 on lower(t3.state) = t2.state;
