@@ -26,4 +26,6 @@ WHERE
         and Company <> ""
         and FirstName <> ""
         and State <> ""
-    );
+    )
+    and
+    jc_paid_lead__c=false;
