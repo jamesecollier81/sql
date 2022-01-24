@@ -25,8 +25,7 @@ WITH added_row_number as (
                     where
                         newvalue IS NOT NULL
                     order by
-                        1,
-                        5
+                        1,5
                 ) t1
                 join (
                     SELECT
