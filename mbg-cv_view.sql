@@ -8,14 +8,14 @@ select
     t1.state,
     t1.payment_plan,
     case
-        when t1.payment_plan ='Custom' then 'Custom/Check/Inv.'
-        when t1.payment_plan ='Invoice' then 'Custom/Check/Inv.'
-        when t1.payment_plan ='Check' then 'Custom/Check/Inv.'
-        when t1.payment_plan ='Once Paid in Full (Due Upon Signing)' then 'PIF'
-        when t1.payment_plan ='12 Monthly Equal Payments (1st Due Upon Signing)' then '12 Mths.'
-        when t1.payment_plan ='6 Monthly Equal Payments (1st Due Upon Signing)' then '6 Mths.'
-        when t1.payment_plan ='3 Monthly Equal Payments (1st Due Upon Signing)' then '3 Mths.'
-        when t1.payment_plan ='50% Due Upon Signing (Next Payment Due in 30 Days)' then '2 Mths.'
+        when t1.payment_plan = 'Custom' then 'Custom/Check/Inv.'
+        when t1.payment_plan = 'Invoice' then 'Custom/Check/Inv.'
+        when t1.payment_plan = 'Check' then 'Custom/Check/Inv.'
+        when t1.payment_plan = 'Once Paid in Full (Due Upon Signing)' then 'PIF'
+        when t1.payment_plan = '12 Monthly Equal Payments (1st Due Upon Signing)' then '12 Mths.'
+        when t1.payment_plan = '6 Monthly Equal Payments (1st Due Upon Signing)' then '6 Mths.'
+        when t1.payment_plan = '3 Monthly Equal Payments (1st Due Upon Signing)' then '3 Mths.'
+        when t1.payment_plan = '50% Due Upon Signing (Next Payment Due in 30 Days)' then '2 Mths.'
         else 'Other'
     end as adj_payment_plan,
     case
@@ -44,6 +44,10 @@ from
                 when product_type like '%2 Star%' then '2 star'
                 when product_type like '%3 Star%' then '3 star'
                 when product_type like '%4 Star%' then '4 star'
+                when product_type like '%5 Star%' then '5 star'
+                when product_type like '%Commander%' then 'Commander'
+                when product_type like '%Featured%' then 'Featured'
+                when product_type like '%Basic%' then 'Basic Jobs Subscription'
                 else 'Other'
             end as prod_grp_type
         from
@@ -57,4 +61,4 @@ from
             mbg.billing_cnt
         group by
             account_name
-    ) t5 on t1.account_name = t5.account_name;
+    ) t5 on t1.account_name = t5.account_name
