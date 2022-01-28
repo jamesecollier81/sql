@@ -3,7 +3,7 @@ select
     t1.billing_number,
     t1.final_amount,
     t2.total_applied,
-    date(t1.opp_created_date) as opp_date,
+    date(t1.opp_date) as opp_date,
     t1.industry,
     t1.state,
     t1.payment_plan,
@@ -48,6 +48,7 @@ from
                 when product_type like '%Commander%' then 'Commander'
                 when product_type like '%Featured%' then 'Featured'
                 when product_type like '%Basic%' then 'Basic Jobs Subscription'
+                when product_type IS NULL then 'Other'
                 else 'Other'
             end as prod_grp_type
         from
