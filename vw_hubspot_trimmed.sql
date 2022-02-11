@@ -1,5 +1,5 @@
 select
-    t1.contact_id as id,
+    concat('exp_autochk',t1.contact_id) as id,
     'Hubspot' as source_system,
     'experian_autocheck' as instance,
     t2.firstname as first_name,
