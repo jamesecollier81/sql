@@ -89,4 +89,34 @@ select
     end as ld_updated_field
 from
     leads_db.vw_outreach t3
-    left join leads_db.leads_state_mapping t2 on lower(t3.state) = t2.state;
+    left join leads_db.leads_state_mapping t2 on lower(t3.state) = t2.state
+UNION
+    DISTINCT
+select 
+    t4.id,
+    t4.source_system,
+    t4.instance,
+    t4.first_name,
+    t4.last_name,
+    t4.email,
+    t4.mobile_phone,
+    t4.home_phone,
+    t4.work_phone,
+    t4.street,
+    t4.city,
+    t2.mapped_state as state,
+    t4.zip,
+    t4.trim_zip,
+    t4.country,
+    t4.company_name,
+    0 as employee_count,
+    t4.industry,
+    t4.domain,
+    t4.customer_crm,
+    t4.company_revenue,
+    t4.purchasing_dept,
+    t4.updated_date,
+    t4.ld_updated_field
+from 
+    leads_db.vw_hubspot_trimmed t4
+    left join leads_db.leads_state_mapping t2 on lower(t4.state) = t2.state;
