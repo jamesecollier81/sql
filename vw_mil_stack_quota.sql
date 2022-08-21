@@ -1,3 +1,6 @@
+/************
+James Collier
+************/
 SELECT
     *,
     SUM(final_amount) OVER(PARTITION BY team) AS team_final_amount,
